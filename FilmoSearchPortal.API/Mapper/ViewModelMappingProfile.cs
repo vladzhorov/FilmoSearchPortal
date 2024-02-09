@@ -35,6 +35,19 @@ namespace FilmoSearchPortal.API.Mapping
 
             CreateMap<UserViewModel, UserEntity>();
             CreateMap<UserEntity, UserViewModel>();
+
+            CreateMap<UserEntity, User>();
+            CreateMap<ActorEntity, Actor>();
+            CreateMap<FilmEntity, Film>();
+            CreateMap<ReviewEntity, Review>();
+
+            CreateMap<User, UserEntity>();
+            CreateMap<Actor, ActorEntity>();
+            CreateMap<Film, FilmEntity>();
+            CreateMap<Review, ReviewEntity>();
+
+
+
         }
     }
 }
