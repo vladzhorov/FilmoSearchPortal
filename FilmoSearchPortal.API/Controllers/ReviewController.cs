@@ -15,6 +15,7 @@ namespace FilmoSearchPortal.API.Controllers
 
         public ReviewController(IMapper mapper, IReviewService reviewService)
         {
+            _mapper = mapper;
             _reviewService = reviewService;
         }
 

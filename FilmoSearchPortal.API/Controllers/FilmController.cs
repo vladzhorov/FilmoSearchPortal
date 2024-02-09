@@ -15,6 +15,7 @@ namespace FilmoSearchPortal.API.Controllers
 
         public FilmController(IMapper mapper, IFilmService filmService)
         {
+            _mapper = mapper;
             _filmService = filmService;
         }
 
