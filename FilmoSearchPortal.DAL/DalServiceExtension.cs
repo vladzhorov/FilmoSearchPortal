@@ -1,12 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+
 
 namespace FilmoSearchPortal.DAL
 {
-    internal class DalServiceExtension
+    public static class DalServiceExtension
     {
+        public static void AddDALDependencies(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Configure<DatabaseOptions>(options => configuration.GetSection(nameof(DatabaseOptions)).Bind(options));
+
+
+            services.AddDbContext<AppDbContext>((serviceProvider, options) =>
+            {
+                var dbOptions = serviceProvider.GetRequiredService<IOptions<DatabaseOptions>>().Value;
+
+                options.UseNpgsql(dbOptions.ConnectionString,
+                    b => b.MigrationsAssembly("FilmoSearchPortal.DAL"));
+            });
+        }
     }
 }
