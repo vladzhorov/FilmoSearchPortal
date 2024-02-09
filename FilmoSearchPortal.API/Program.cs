@@ -13,6 +13,7 @@ using FilmoSearchPortal.DAL.Repostories;
 using FluentValidation.AspNetCore;
 using Microsoft.OpenApi.Models;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers()
@@ -25,8 +26,14 @@ builder.Services.AddControllers()
 
     });
 
-builder.Services.AddControllers();
+//AddJsonOptions(op =>
+//{
+//    op.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+
+//});
+
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = " API ", Version = "v1" });
@@ -42,6 +49,7 @@ var configuration = new ConfigurationBuilder()
 builder.Services.AddDALDependencies(configuration/*, useInMemoryDatabase: true*/);
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IActorRepository, ActorRepository>();
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 builder.Services.AddScoped<IFilmService, FilmService>();
@@ -57,6 +65,9 @@ builder.Services.AddAutoMapper(typeof(Program), typeof(ViewModelMappingProfile))
 var app = builder.Build();
 
 
+
+app.UseMiddleware<ExceptionMiddleware>();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -67,7 +78,7 @@ if (app.Environment.IsDevelopment())
 }
 
 
-app.UseMiddleware<ExceptionMiddleware>();
+
 
 app.UseHttpsRedirection();
 
