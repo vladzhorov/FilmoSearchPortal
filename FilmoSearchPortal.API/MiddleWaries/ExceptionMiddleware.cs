@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿
+using System.Net;
+using System.Text.Json;
 
 namespace FilmoSearchPortal.API.Middleware
 {
@@ -13,22 +15,46 @@ namespace FilmoSearchPortal.API.Middleware
             _logger = logger;
         }
 
-        public async Task Invoke(HttpContext context)
+        public async Task InvokeAsync(HttpContext context)
         {
             try
             {
-                await _next(context);
+                await _next.Invoke(context);
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                _logger.LogError($"Unhandled exception: {ex}");
+                _logger.LogError(exception, "{Message}", exception.Message);
+                await HandleExceptionAsync(context, exception);
+            }
+        }
 
-                // Установим статус-код в Internal Server Error (500)
+        private async Task HandleExceptionAsync(HttpContext context, Exception exception)
+        {
+            context.Response.ContentType = "application/json";
+
+            if (exception is DomainException domainException)
+            {
+                context.Response.StatusCode = (int)domainException.HttpStatusCode;
+                var response = new
+                {
+                    Message = domainException.Message,
+                    Code = domainException.Code,
+                    ExceptionMessage = domainException.InnerException?.Message
+                };
+                await context.Response.WriteAsync(JsonSerializer.Serialize(response));
+            }
+            else
+            {
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-
-
-                await context.Response.WriteAsync("Internal Server Error. Something went wrong.");
+                var response = new
+                {
+                    Message = "Internal Server Error. Please try again later.",
+                    ExceptionMessage = exception.Message,
+                    InnerExceptionMessage = exception.InnerException?.Message
+                };
+                await context.Response.WriteAsync(JsonSerializer.Serialize(response));
             }
         }
     }
 }
+
