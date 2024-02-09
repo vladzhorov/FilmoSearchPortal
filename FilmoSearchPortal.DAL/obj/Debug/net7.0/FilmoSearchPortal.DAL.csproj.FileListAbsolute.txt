@@ -1,0 +1,14 @@
+C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.DAL\bin\Debug\net7.0\FilmoSearchPortal.DAL.deps.json
+C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.DAL\bin\Debug\net7.0\FilmoSearchPortal.DAL.runtimeconfig.json
+C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.DAL\bin\Debug\net7.0\FilmoSearchPortal.DAL.dll
+C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.DAL\bin\Debug\net7.0\FilmoSearchPortal.DAL.pdb
+C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.DAL\obj\Debug\net7.0\FilmoSearchPortal.DAL.csproj.AssemblyReference.cache
+C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.DAL\obj\Debug\net7.0\FilmoSearchPortal.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.DAL\obj\Debug\net7.0\FilmoSearchPortal.DAL.AssemblyInfoInputs.cache
+C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.DAL\obj\Debug\net7.0\FilmoSearchPortal.DAL.AssemblyInfo.cs
+C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.DAL\obj\Debug\net7.0\FilmoSearchPortal.DAL.csproj.CoreCompileInputs.cache
+C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.DAL\obj\Debug\net7.0\FilmoSearchPortal.DAL.dll
+C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.DAL\obj\Debug\net7.0\refint\FilmoSearchPortal.DAL.dll
+C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.DAL\obj\Debug\net7.0\FilmoSearchPortal.DAL.pdb
+C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.DAL\obj\Debug\net7.0\FilmoSearchPortal.DAL.genruntimeconfig.cache
+C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.DAL\obj\Debug\net7.0\ref\FilmoSearchPortal.DAL.dll
