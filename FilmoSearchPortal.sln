@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmoSearchPortal.API", "FilmoSearchPortal.API\FilmoSearchPortal.API.csproj", "{6913DB89-3180-4A93-AF73-ED1BAD29F212}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilmoSearchPortal.API", "FilmoSearchPortal.API\FilmoSearchPortal.API.csproj", "{6913DB89-3180-4A93-AF73-ED1BAD29F212}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmoSearchPortal.BLL", "FilmoSearchPortal.BLL\FilmoSearchPortal.BLL.csproj", "{B6F41099-ABE1-43A5-8BAD-2A26706C9E20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilmoSearchPortal.BLL", "FilmoSearchPortal.BLL\FilmoSearchPortal.BLL.csproj", "{B6F41099-ABE1-43A5-8BAD-2A26706C9E20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmoSearchPortal.DAL", "FilmoSearchPortal.DAL\FilmoSearchPortal.DAL.csproj", "{D59CB07A-37D0-4963-9A43-9797DF2887BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilmoSearchPortal.DAL", "FilmoSearchPortal.DAL\FilmoSearchPortal.DAL.csproj", "{D59CB07A-37D0-4963-9A43-9797DF2887BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmoSearchPortal.UnitTest", "FilmoSearchPortal.UnitTest\FilmoSearchPortal.UnitTest.csproj", "{927D0194-2DA2-41CE-96C3-4D2A02CF7779}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{D59CB07A-37D0-4963-9A43-9797DF2887BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D59CB07A-37D0-4963-9A43-9797DF2887BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D59CB07A-37D0-4963-9A43-9797DF2887BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{927D0194-2DA2-41CE-96C3-4D2A02CF7779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{927D0194-2DA2-41CE-96C3-4D2A02CF7779}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{927D0194-2DA2-41CE-96C3-4D2A02CF7779}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{927D0194-2DA2-41CE-96C3-4D2A02CF7779}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
