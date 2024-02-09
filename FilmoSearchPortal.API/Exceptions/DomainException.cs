@@ -1,4 +1,7 @@
-﻿namespace FilmoSearchPortal.API.Exceptions
+﻿using System.Net;
+using System.Runtime.Serialization;
+
+namespace FilmoSearchPortal.API.Exceptions
 {
     [Serializable]
     public abstract class DomainException : Exception
