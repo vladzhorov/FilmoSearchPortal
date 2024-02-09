@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FilmoSearchPortal.DAL
+﻿namespace FilmoSearchPortal.DAL
 {
-    internal class DatabaseOptions
+    public class DatabaseOptions
     {
+        public string ConnectionString { get; set; }
     }
 }
