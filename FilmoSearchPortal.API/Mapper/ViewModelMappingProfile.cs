@@ -13,15 +13,10 @@ namespace FilmoSearchPortal.API.Mapping
         public ViewModelMappingProfile()
         {
 
-            CreateMap<Film, FilmViewModel>();
+            CreateMap<Film, FilmViewModel>()
+               .ForMember(dest => dest.Actors, opt => opt.MapFrom(src => src.Actors));
             CreateMap<Actor, ActorViewModel>();
             CreateMap<Review, ReviewViewModel>();
-
-
-            CreateMap<FilmViewModel, Film>();
-            CreateMap<ActorViewModel, Actor>();
-            CreateMap<ReviewViewModel, Review>();
-
 
             CreateMap<CreateFilmViewModel, Film>();
             CreateMap<UpdateFilmViewModel, Film>();
@@ -32,13 +27,15 @@ namespace FilmoSearchPortal.API.Mapping
             CreateMap<CreateReviewViewModel, Review>();
             CreateMap<UpdateReviewViewModel, Review>();
 
-
             CreateMap<UserViewModel, UserEntity>();
             CreateMap<UserEntity, UserViewModel>();
+            CreateMap<User, UserViewModel>();
+            CreateMap<CreateUserViewModel, User>();
 
             CreateMap<UserEntity, User>();
             CreateMap<ActorEntity, Actor>();
-            CreateMap<FilmEntity, Film>();
+            CreateMap<FilmEntity, Film>()
+                .ForMember(dest => dest.Actors, opt => opt.MapFrom(src => src.Actors));
             CreateMap<ReviewEntity, Review>();
 
             CreateMap<User, UserEntity>();
