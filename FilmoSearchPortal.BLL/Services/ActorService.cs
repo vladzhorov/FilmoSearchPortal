@@ -8,12 +8,13 @@ namespace FilmoSearchPortal.BLL.Services
 {
     public class ActorService : GenericService<ActorEntity, Actor>, IActorService
     {
-        private readonly IActorRepository _actorRepository;
 
-        public ActorService(IActorRepository actorRepository, IMapper mapper)
-            : base(actorRepository, mapper)
+        public ActorService(IActorRepository actorRepository, IMapper mapper) : base(actorRepository, mapper)
+
         {
-            _actorRepository = actorRepository;
+
         }
     }
 }
+
+
