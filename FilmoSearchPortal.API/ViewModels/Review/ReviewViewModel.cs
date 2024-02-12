@@ -7,6 +7,6 @@
         public string Description { get; set; }
         public int Stars { get; set; }
         public DateTime ReviewDate { get; set; }
-        public int FilmId { get; set; }
+        public Guid FilmId { get; set; }
     }
 }
