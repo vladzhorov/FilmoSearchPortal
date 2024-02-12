@@ -1,6 +1,4 @@
-﻿using FilmoSearchPortal.DAL.Entites;
-
-namespace FilmoSearchPortal.BLL.Models
+﻿namespace FilmoSearchPortal.BLL.Models
 {
     public class Film
     {
@@ -8,8 +6,8 @@ namespace FilmoSearchPortal.BLL.Models
         public string Title { get; set; }
         public string Genre { get; set; }
         public DateTime ReleaseDate { get; set; }
-        public ICollection<ActorEntity> Actors { get; set; }
-        public ICollection<ReviewEntity> Reviews { get; set; }
+        public ICollection<Actor> Actors { get; set; }
+        public ICollection<Review> Reviews { get; set; }
 
     }
 }

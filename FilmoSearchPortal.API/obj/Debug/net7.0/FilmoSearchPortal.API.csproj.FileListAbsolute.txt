@@ -363,3 +363,5 @@ C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.API\bin\Deb
 C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.API\bin\Debug\net7.0\Microsoft.Extensions.Hosting.dll
 C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.API\bin\Debug\net7.0\System.Diagnostics.DiagnosticSource.dll
 C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.API\obj\Debug\net7.0\MvcTestingAppManifest.json
+C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.API\bin\Debug\net7.0\Castle.Core.dll
+C:\ALLVUSIALSTD\FilmSearchPortal\FilmoSearchPortal\FilmoSearchPortal.API\bin\Debug\net7.0\Moq.dll

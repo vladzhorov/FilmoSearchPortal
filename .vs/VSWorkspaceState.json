@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\.github",
+    "\\.github\\workflows"
   ],
-  "SelectedNode": "\\docker-compose.yml",
+  "SelectedNode": "\\.github\\workflows\\dotnet.yml",
   "PreviewInSolutionExplorer": false
 }
