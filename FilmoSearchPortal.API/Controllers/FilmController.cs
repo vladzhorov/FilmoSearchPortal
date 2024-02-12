@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using FilmoSearchPortal.API.ViewModels.Actor;
 using FilmoSearchPortal.API.ViewModels.Film;
 using FilmoSearchPortal.BLL.Abstractions.Services;
 using FilmoSearchPortal.BLL.Models;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace FilmoSearchPortal.API.Controllers
@@ -11,19 +13,24 @@ namespace FilmoSearchPortal.API.Controllers
     public class FilmController : ControllerBase
     {
         private readonly IFilmService _filmService;
+        private readonly IActorService _actorService;
         private readonly IMapper _mapper;
 
-        public FilmController(IMapper mapper, IFilmService filmService)
+        public FilmController(IMapper mapper, IFilmService filmService, IActorService actorService)
         {
             _mapper = mapper;
             _filmService = filmService;
+            _actorService = actorService;
         }
 
         [HttpGet]
         public async Task<IEnumerable<FilmViewModel>> GetAll(CancellationToken cancellationToken)
         {
             var films = await _filmService.GetAllAsync(cancellationToken);
-            return _mapper.Map<IEnumerable<FilmViewModel>>(films);
+            var filmViewModels = _mapper.Map<IEnumerable<FilmViewModel>>(films);
+
+
+            return filmViewModels;
         }
 
         [HttpGet("{id}")]
@@ -59,6 +66,55 @@ namespace FilmoSearchPortal.API.Controllers
         {
             await _filmService.DeleteAsync(id, cancellationToken);
 
+
         }
+        [HttpPost("{filmId}/actors")]
+        public async Task<ActionResult<FilmViewModel>> AddActorsToFilm(Guid filmId, ICollection<Guid> actorIds, CancellationToken cancellationToken)
+        {
+            var film = await _filmService.GetByIdAsync(filmId, cancellationToken);
+            if (film == null)
+            {
+                return NotFound();
+            }
+
+            var actors = new List<Actor>();
+            foreach (var actorId in actorIds)
+            {
+                var actor = await _actorService.GetByIdAsync(actorId, cancellationToken);
+                if (actor == null)
+                {
+                    return NotFound($"Actor with ID {actorId} not found.");
+                }
+                actors.Add(actor);
+            }
+
+            film.Actors ??= new List<Actor>();
+            foreach (var actor in actors)
+            {
+                film.Actors.Add(actor);
+            }
+
+            // Сохраняем изменения в базе данных
+            var result = await _filmService.UpdateAsync(film, cancellationToken);
+            if (result == null)
+            {
+                return BadRequest("Error updating film.");
+            }
+
+            // После сохранения обновленного фильма, получаем актуальные данные о фильме
+            var updatedFilm = await _filmService.GetByIdAsync(filmId, cancellationToken);
+
+            // Маппим фильм в FilmViewModel
+            var filmViewModel = _mapper.Map<FilmViewModel>(updatedFilm);
+
+            // Маппим актеров фильма в ActorViewModel
+            filmViewModel.Actors = _mapper.Map<IEnumerable<ActorViewModel>>(updatedFilm.Actors);
+
+            return filmViewModel;
+        }
+
+
+
+
     }
 }
