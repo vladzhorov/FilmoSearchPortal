@@ -8,11 +8,12 @@ using FilmoSearchPortal.API.Validators.User;
 using FilmoSearchPortal.BLL.Abstractions.Services;
 using FilmoSearchPortal.BLL.Services;
 using FilmoSearchPortal.DAL;
+using FilmoSearchPortal.DAL.Entites;
 using FilmoSearchPortal.DAL.Interfaces;
 using FilmoSearchPortal.DAL.Repostories;
 using FluentValidation.AspNetCore;
 using Microsoft.OpenApi.Models;
-
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,13 +25,12 @@ builder.Services.AddControllers()
         fv.RegisterValidatorsFromAssemblyContaining<CreateFilmViewModelValidator>();
         fv.RegisterValidatorsFromAssemblyContaining<CreateActorViewModelValidator>();
 
-    });
+    })
+     .AddJsonOptions(op =>
+{
+    op.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
 
-//AddJsonOptions(op =>
-//{
-//    op.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-
-//});
+});
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -56,6 +56,8 @@ builder.Services.AddScoped<IFilmService, FilmService>();
 builder.Services.AddScoped<IActorService, ActorService>();
 builder.Services.AddScoped<IReviewService, ReviewService>();
 builder.Services.AddScoped<IFilmRepository, FilmRepository>();
+builder.Services.AddScoped<IRepository<FilmEntity>, FilmRepository>();
+
 
 builder.Services.AddScoped<ReviewController>();
 builder.Services.AddScoped<FilmController>();
