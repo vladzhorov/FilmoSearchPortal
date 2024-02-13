@@ -8,12 +8,11 @@ namespace FilmoSearchPortal.BLL.Services
 {
     public class UserService : GenericService<UserEntity, User>, IUserService
     {
-        private readonly IUserRepository _userRepository;
 
-        public UserService(IUserRepository userRepository, IMapper mapper)
-            : base(userRepository, mapper)
+
+        public UserService(IUserRepository userRepository, IMapper mapper) : base(userRepository, mapper)
         {
-            _userRepository = userRepository;
+
         }
     }
 }

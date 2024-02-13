@@ -8,5 +8,6 @@ namespace FilmoSearchPortal.DAL.Repostories
         public UserRepository(AppDbContext dbContext) : base(dbContext)
         {
         }
+
     }
 }

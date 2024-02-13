@@ -1,49 +1,35 @@
 ﻿using AutoMapper;
 using FilmoSearchPortal.BLL.Abstractions.Services;
 using FilmoSearchPortal.BLL.Models;
-using FilmoSearchPortal.DAL;
 using FilmoSearchPortal.DAL.Entites;
 using FilmoSearchPortal.DAL.Interfaces;
-using Microsoft.EntityFrameworkCore;
+using static FilmoSearchPortal.DAL.Entites.EnumsEntity;
 
 namespace FilmoSearchPortal.BLL.Services
 {
     public class FilmService : GenericService<FilmEntity, Film>, IFilmService
     {
-        private readonly AppDbContext _context;
+        private readonly IFilmRepository _repository;
+        private readonly IMapper _mapper;
 
-        public FilmService(IRepository<FilmEntity> repository, IMapper mapper, AppDbContext context) : base(repository, mapper)
+        public FilmService(IFilmRepository repository, IMapper mapper) : base(repository, mapper)
         {
-            _context = context;
+            _repository = repository;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<Actor>> GetActorsForFilmAsync(Guid filmId, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Film>> GetAllAsync(int pageNumber, int pageSize, string? title, Genre? genre, CancellationToken cancellationToken)
         {
-            var film = await _context.Films.Include(f => f.Actors).FirstOrDefaultAsync(f => f.Id == filmId, cancellationToken);
-            return _mapper.Map<IEnumerable<Actor>>(film.Actors);
-        }
-
-        public async override Task<IEnumerable<Film>> GetAllAsync(CancellationToken cancellationToken)
+            var filmsEntities = await _repository.GetAllAsync(pageNumber, pageSize, title, genre, cancellationToken);
+            var filmModels = filmsEntities.Select(film =>
         {
-            var filmsWithActorsAndReviews = await _context.Films
-                .Include(f => f.Actors)
-                .Include(f => f.Reviews)
-                .ToListAsync(cancellationToken);
+            var filmModel = _mapper.Map<Film>(film);
+            filmModel.Actors = _mapper.Map<ICollection<Actor>>(film.Actors);
+            filmModel.Reviews = _mapper.Map<ICollection<Review>>(film.Reviews);
+            return filmModel;
+        });
 
-            var models = _mapper.Map<IEnumerable<Film>>(filmsWithActorsAndReviews);
-            return models;
-        }
-
-        public async Task<IEnumerable<Review>> GetReviewsForFilmAsync(Guid filmId, CancellationToken cancellationToken)
-        {
-            var film = await _context.Films
-                .Include(f => f.Reviews)
-                .FirstOrDefaultAsync(f => f.Id == filmId, cancellationToken);
-
-            if (film == null || film.Reviews == null)
-                return Enumerable.Empty<Review>();
-
-            return _mapper.Map<IEnumerable<Review>>(film.Reviews);
+            return filmModels;
         }
     }
 }

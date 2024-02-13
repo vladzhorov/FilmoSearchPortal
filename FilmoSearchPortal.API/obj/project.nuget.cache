@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XTOP4rRBhBprrw9rZOf0bEMjrpw2PovGz5xj4wDnrx8SmyPzzkh/yNqS4i/XQWucSzHeBJFbIhVFRycL4HFzhw==",
+  "dgSpecHash": "YtpbiiYXelbHwXXTI9RnQRySxw8bvyTTiU0BUkxNt0AWm7cevmIe65xgNT+vawaAl1TU1imfCS57PPtR6BokTA==",
   "success": true,
   "projectFilePath": "C:\\ALLVUSIALSTD\\FilmSearchPortal\\FilmoSearchPortal\\FilmoSearchPortal.API\\FilmoSearchPortal.API.csproj",
   "expectedPackageFiles": [
@@ -20,6 +20,7 @@
     "C:\\Users\\Vlad\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.15\\microsoft.entityframeworkcore.abstractions.7.0.15.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.15\\microsoft.entityframeworkcore.analyzers.7.0.15.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\microsoft.entityframeworkcore.design\\7.0.15\\microsoft.entityframeworkcore.design.7.0.15.nupkg.sha512",
+    "C:\\Users\\Vlad\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\7.0.15\\microsoft.entityframeworkcore.inmemory.7.0.15.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.15\\microsoft.entityframeworkcore.relational.7.0.15.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\7.0.15\\microsoft.entityframeworkcore.tools.7.0.15.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

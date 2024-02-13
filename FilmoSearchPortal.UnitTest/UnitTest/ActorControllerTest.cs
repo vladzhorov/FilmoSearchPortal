@@ -5,6 +5,7 @@ using FilmoSearchPortal.BLL.Abstractions.Services;
 using FilmoSearchPortal.BLL.Models;
 using FilmoSearchPortal.UnitTest.TestData;
 using Moq;
+using static FilmoSearchPortal.DAL.Entites.EnumsEntity;
 
 namespace FilmoSearchPortal.UnitTest.UnitTest
 {
@@ -23,14 +24,22 @@ namespace FilmoSearchPortal.UnitTest.UnitTest
         public async Task GetAll_ReturnsListOfActorViewModels()
         {
             // Arrange
+
+
+            var pageNumber = 1;
+            var pageSize = 10;
+            var firstName = "first";
+            var lastName = "last";
+            var actorStatus = ActorStatus.Active;
+            var (reviews, reviewViewModels) = ReviewControllerTestHelper.TestGetAll();
             var (actors, actorViewModels) = ActorControllerTestHelper.TestGetAll();
             var cancellationToken = new CancellationToken();
-            _actorServiceMock.Setup(service => service.GetAllAsync(cancellationToken)).ReturnsAsync(actors);
+            _actorServiceMock.Setup(service => service.GetAllAsync(pageNumber, pageSize, firstName, lastName, actorStatus, cancellationToken)).ReturnsAsync(actors);
             _mapper.Setup(mapper => mapper.Map<IEnumerable<ActorViewModel>>(actors)).Returns(actorViewModels);
             var controller = new ActorController(_mapper.Object, _actorServiceMock.Object);
 
             // Act
-            var result = await controller.GetAll(cancellationToken);
+            var result = await controller.GetAll(pageNumber, pageSize, firstName, lastName, actorStatus, cancellationToken);
 
             // Assert
             var model = Assert.IsAssignableFrom<IEnumerable<ActorViewModel>>(result);

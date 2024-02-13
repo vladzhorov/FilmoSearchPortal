@@ -3,6 +3,7 @@ using FilmoSearchPortal.API.ViewModels.Actor;
 using FilmoSearchPortal.BLL.Abstractions.Services;
 using FilmoSearchPortal.BLL.Models;
 using Microsoft.AspNetCore.Mvc;
+using static FilmoSearchPortal.DAL.Entites.EnumsEntity;
 
 namespace FilmoSearchPortal.API.Controllers
 {
@@ -21,9 +22,9 @@ namespace FilmoSearchPortal.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ActorViewModel>> GetAll(CancellationToken cancellationToken)
+        public async Task<IEnumerable<ActorViewModel>> GetAll(int pageNumber, int pageSize, string? firstName, string? lastName, ActorStatus? actorStatus, CancellationToken cancellationToken)
         {
-            var actors = await _actorService.GetAllAsync(cancellationToken);
+            var actors = await _actorService.GetAllAsync(pageNumber, pageSize, firstName, lastName, actorStatus, cancellationToken);
             return _mapper.Map<IEnumerable<ActorViewModel>>(actors);
         }
 

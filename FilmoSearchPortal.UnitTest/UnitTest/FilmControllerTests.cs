@@ -5,6 +5,7 @@ using FilmoSearchPortal.BLL.Abstractions.Services;
 using FilmoSearchPortal.BLL.Models;
 using FilmoSearchPortal.UnitTest.TestData;
 using Moq;
+using static FilmoSearchPortal.DAL.Entites.EnumsEntity;
 
 namespace FilmoSearchPortal.UnitTest.UnitTest
 {
@@ -25,18 +26,25 @@ namespace FilmoSearchPortal.UnitTest.UnitTest
         public async Task GetAll_ReturnsListOfFilmViewModels()
         {
             // Arrange
+            var pageNumber = 1;
+            var pageSize = 10;
+            var title = "title";
+            var genre = Genre.Drama;
             var (films, filmViewModels) = FilmControllerTestHelper.TestGetAll();
             var cancellationToken = new CancellationToken();
-            _filmServiceMock.Setup(service => service.GetAllAsync(cancellationToken)).ReturnsAsync(films);
+            _filmServiceMock.Setup(service => service.GetAllAsync(pageNumber, pageSize, title, genre, cancellationToken)).ReturnsAsync(films);
             _mapper.Setup(mapper => mapper.Map<IEnumerable<FilmViewModel>>(films)).Returns(filmViewModels);
             var controller = new FilmController(_mapper.Object, _filmServiceMock.Object, _actorServiceMock.Object);
 
             // Act
-            var result = await controller.GetAll(cancellationToken);
+            var result = await controller.GetAll(pageNumber, pageSize, title, genre, cancellationToken);
 
             // Assert
             var model = Assert.IsAssignableFrom<IEnumerable<FilmViewModel>>(result);
+            Assert.Equal(filmViewModels.Count, result.Count());
+            Assert.Equal(filmViewModels[0].Id, result.ElementAt(0).Id);
             Assert.Equal(2, model.Count());
+
         }
 
         [Fact]

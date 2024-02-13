@@ -475,3 +475,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+# added files and folders
+bin/Debug/7.0
+obj/

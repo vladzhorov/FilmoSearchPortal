@@ -14,7 +14,7 @@ namespace FilmoSearchPortal.API.Mapping
         {
 
             CreateMap<Film, FilmViewModel>()
-               .ForMember(dest => dest.Actors, opt => opt.MapFrom(src => src.Actors));
+            .ForMember(dest => dest.Actors, opt => opt.MapFrom(src => src.Actors));
             CreateMap<Actor, ActorViewModel>();
             CreateMap<Review, ReviewViewModel>();
 
@@ -35,7 +35,7 @@ namespace FilmoSearchPortal.API.Mapping
             CreateMap<UserEntity, User>();
             CreateMap<ActorEntity, Actor>();
             CreateMap<FilmEntity, Film>()
-                .ForMember(dest => dest.Actors, opt => opt.MapFrom(src => src.Actors));
+            .ForMember(dest => dest.Actors, opt => opt.MapFrom(src => src.Actors));
             CreateMap<ReviewEntity, Review>();
 
             CreateMap<User, UserEntity>();

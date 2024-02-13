@@ -25,12 +25,16 @@ namespace FilmoSearchPortal.UnitTest.UnitTest
             // Arrange
             var (reviews, reviewViewModels) = ReviewControllerTestHelper.TestGetAll();
             var cancellationToken = new CancellationToken();
-            _reviewServiceMock.Setup(service => service.GetAllAsync(cancellationToken)).ReturnsAsync(reviews);
+            var pageNumber = 1;
+            var pageSize = 10;
+            var title = "new";
+            var stars = 3;
+            _reviewServiceMock.Setup(service => service.GetAllAsync(pageNumber, pageSize, title, stars, cancellationToken)).ReturnsAsync(reviews);
             _mapper.Setup(mapper => mapper.Map<IEnumerable<ReviewViewModel>>(reviews)).Returns(reviewViewModels);
             var controller = new ReviewController(_mapper.Object, _reviewServiceMock.Object);
 
             // Act
-            var result = await controller.GetAll(cancellationToken);
+            var result = await controller.GetAll(pageNumber, pageSize, title, stars, cancellationToken);
 
             // Assert
             var model = Assert.IsAssignableFrom<IEnumerable<ReviewViewModel>>(result);

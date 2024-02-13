@@ -20,9 +20,9 @@ namespace FilmoSearchPortal.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ReviewViewModel>> GetAll(CancellationToken cancellationToken)
+        public async Task<IEnumerable<ReviewViewModel>> GetAll(int pageNumber, int pageSize, string? title, int? stars, CancellationToken cancellationToken)
         {
-            var reviews = await _reviewService.GetAllAsync(cancellationToken);
+            var reviews = await _reviewService.GetAllAsync(pageNumber, pageSize, title, stars, cancellationToken);
             return _mapper.Map<IEnumerable<ReviewViewModel>>(reviews);
         }
 
