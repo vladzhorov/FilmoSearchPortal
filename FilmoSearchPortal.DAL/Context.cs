@@ -28,11 +28,6 @@ namespace FilmoSearchPortal.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //base.OnModelCreating(modelBuilder);
-
-
-
-
-
         }
     }
 }
