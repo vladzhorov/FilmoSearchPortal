@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace FilmoSearchPortal.API.Validators.User
 {
-    public class UserViewModelValidator : AbstractValidator<UserViewModel>
+    public class CreateUserViewModelValidator : AbstractValidator<UserViewModel>
     {
-        public UserViewModelValidator()
+        public CreateUserViewModelValidator()
         {
             RuleFor(user => user.Username).NotEmpty().MaximumLength(50);
 

@@ -8,7 +8,7 @@ namespace FilmoSearchPortal.API.Validators.Film
         public CreateFilmViewModelValidator()
         {
             RuleFor(model => model.Title).NotEmpty().MaximumLength(100);
-            //RuleFor(model => model.Genre).NotEmpty().MaximumLength(50);
+            RuleFor(model => model.Genre).IsInEnum();
             RuleFor(model => model.ReleaseDate).NotEmpty().GreaterThan(DateTime.MinValue);
         }
     }
