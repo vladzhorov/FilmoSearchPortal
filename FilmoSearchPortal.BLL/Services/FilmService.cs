@@ -21,14 +21,7 @@ namespace FilmoSearchPortal.BLL.Services
         public async Task<IEnumerable<Film>> GetAllAsync(int pageNumber, int pageSize, string? title, Genre? genre, CancellationToken cancellationToken)
         {
             var filmsEntities = await _repository.GetAllAsync(pageNumber, pageSize, title, genre, cancellationToken);
-            var filmModels = filmsEntities.Select(film =>
-        {
-            var filmModel = _mapper.Map<Film>(film);
-            filmModel.Actors = _mapper.Map<ICollection<Actor>>(film.Actors);
-            filmModel.Reviews = _mapper.Map<ICollection<Review>>(film.Reviews);
-            return filmModel;
-        });
-
+            var filmModels = _mapper.Map<IEnumerable<Film>>(filmsEntities);
             return filmModels;
         }
     }
