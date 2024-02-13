@@ -20,7 +20,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers()
     .AddFluentValidation(fv =>
     {
-        fv.RegisterValidatorsFromAssemblyContaining<UserViewModelValidator>();
+        fv.RegisterValidatorsFromAssemblyContaining<CreateUserViewModelValidator>();
         fv.RegisterValidatorsFromAssemblyContaining<CreateReviewViewModelValidator>();
         fv.RegisterValidatorsFromAssemblyContaining<CreateFilmViewModelValidator>();
         fv.RegisterValidatorsFromAssemblyContaining<CreateActorViewModelValidator>();
@@ -46,7 +46,7 @@ var configuration = new ConfigurationBuilder()
 
 
 
-builder.Services.AddDALDependencies(configuration/*, useInMemoryDatabase: true*/);
+builder.Services.AddDALDependencies(configuration, useInMemoryDatabase: true);
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
