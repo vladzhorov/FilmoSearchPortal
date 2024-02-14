@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilmoSearchPortal.DAL", "Fi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilmoSearchPortal.UnitTest", "FilmoSearchPortal.UnitTest\FilmoSearchPortal.UnitTest.csproj", "{927D0194-2DA2-41CE-96C3-4D2A02CF7779}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmoSearchPortal.IntegrationTest", "FilmoSearchPortal.IntegrationTest\FilmoSearchPortal.IntegrationTest.csproj", "{A601483F-9226-4C39-A456-07C6680F3986}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{927D0194-2DA2-41CE-96C3-4D2A02CF7779}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{927D0194-2DA2-41CE-96C3-4D2A02CF7779}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{927D0194-2DA2-41CE-96C3-4D2A02CF7779}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A601483F-9226-4C39-A456-07C6680F3986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A601483F-9226-4C39-A456-07C6680F3986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A601483F-9226-4C39-A456-07C6680F3986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A601483F-9226-4C39-A456-07C6680F3986}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
