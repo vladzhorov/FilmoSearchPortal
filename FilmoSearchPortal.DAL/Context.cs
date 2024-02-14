@@ -24,10 +24,5 @@ namespace FilmoSearchPortal.DAL
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             System.Diagnostics.Debug.WriteLine(_configuration);
         }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            //base.OnModelCreating(modelBuilder);
-        }
     }
 }

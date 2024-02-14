@@ -10,7 +10,6 @@ namespace FilmoSearchPortal.DAL.Repostories
         public ActorRepository(AppDbContext dbContext) : base(dbContext)
         {
         }
-
         public async Task<IEnumerable<ActorEntity>> GetAllAsync(int pageNumber, int pageSize, string? firstName, string? lastName, ActorStatus? actorStatus, CancellationToken cancellationToken)
         {
             IQueryable<ActorEntity> query = _dbContext.Actors.AsQueryable();

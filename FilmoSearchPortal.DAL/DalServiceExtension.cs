@@ -10,7 +10,7 @@ namespace FilmoSearchPortal.DAL
 {
     public static class DalServiceExtension
     {
-        public static void AddDALDependencies(this IServiceCollection services, IConfiguration configuration, bool useInMemoryDatabase)
+        public static void AddDALDependencies(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<DatabaseOptions>(options => configuration.GetSection(nameof(DatabaseOptions)).Bind(options));
 

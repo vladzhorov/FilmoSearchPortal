@@ -1,12 +1,16 @@
-﻿namespace FilmoSearchPortal.DAL.Entites
+﻿using System.Text.Json.Serialization;
+
+namespace FilmoSearchPortal.DAL.Entites
 {
     public class EnumsEntity
     {
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public enum ActorStatus
         {
             Active,
             Retired
         }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public enum Genre
         {
             Animation,
