@@ -3,16 +3,14 @@ using FluentValidation;
 
 namespace FilmoSearchPortal.API.Validators.Actor
 {
-    public class CreateActorViewModelValidator : AbstractValidator<CreateActorViewModel>
+    public class UpdateActorViewModelValidator : AbstractValidator<UpdateActorViewModel>
     {
-        public CreateActorViewModelValidator()
+        public UpdateActorViewModelValidator()
         {
             RuleFor(model => model.FirstName).NotEmpty().MaximumLength(50);
             RuleFor(model => model.LastName).NotEmpty().MaximumLength(50);
             RuleFor(model => model.DateOfBirth).NotEmpty().GreaterThan(DateTime.MinValue);
             RuleFor(model => model.ActorStatus).IsInEnum();
         }
-
-
     }
 }
